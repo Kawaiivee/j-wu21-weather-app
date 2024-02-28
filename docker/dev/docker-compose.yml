@@ -1,19 +1,20 @@
 version: '3'
 services:
-  j-wu21-weather-app:
-    container_name: j-wu21-weather-app
+  j-wu21-weather-app-nginx:
+    container_name: j-wu21-weather-app-nginx
+    tty: true
     networks:
       - j-wu21-network
-    tty: true
-    build:
-      context: '../../src'
-      dockerfile: Dockerfile
+    image: nginx:latest
     expose:
-      - 8902
+      - 8802
     ports:
-      - 8802:8802
+      - "8802:80"
     environment:
       - PORT=8802
+    volumes:
+      - "../../src:/usr/share/nginx/html"
+      - "./nginx.conf:/etc/nginx/nginx.conf"
 networks:
   j-wu21-network:
     driver: bridge
