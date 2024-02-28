@@ -1,0 +1,17 @@
+version: '3'
+services:
+  j-wu21-weather-app:
+    container_name: j-wu21-weather-app
+    networks:
+      - j-wu21-network
+    tty: true
+    build:
+      context: '../../src'
+      dockerfile: Dockerfile
+    ports:
+      - 8802:8802
+    environment:
+      - PORT=8802
+networks:
+  j-wu21-network:
+    driver: bridge
