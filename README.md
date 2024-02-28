@@ -1,1 +1,1 @@
-# j-wu21-weather-app
+# weather-app
